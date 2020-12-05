@@ -1,7 +1,8 @@
 // input file: input.txt
 
 
-const fs = require('fs');
+const fs = require('fs')
+const tStart = Date.now()
 let nums
 let result
 fs.readFile('input.txt', (err, data) => {
@@ -30,5 +31,7 @@ fs.readFile('input.txt', (err, data) => {
 		}
 
 	}
+		let t = Date.now() - tStart
+		console.log(`time elapsed: ${t} ms`)
 })
 
