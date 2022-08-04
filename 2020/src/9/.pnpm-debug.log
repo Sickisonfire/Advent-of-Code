@@ -1,0 +1,19 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "errno": 2,
+    "code": "ELIFECYCLE",
+    "pkgid": "2020@1.0.0",
+    "stage": "dev",
+    "script": "func() { pnpm run ts-node-dev \"$(pwd)/index.ts\" }; func",
+    "pkgname": "2020",
+    "err": {
+      "name": "pnpm",
+      "message": "2020@1.0.0 dev: `func() { pnpm run ts-node-dev \"$(pwd)/index.ts\" }; func`\nExit status 2",
+      "code": "ELIFECYCLE",
+      "stack": "pnpm: 2020@1.0.0 dev: `func() { pnpm run ts-node-dev \"$(pwd)/index.ts\" }; func`\nExit status 2\n    at EventEmitter.<anonymous> (/home/marcel/.node/corepack/pnpm/7.2.1/dist/pnpm.cjs:107358:20)\n    at EventEmitter.emit (node:events:527:28)\n    at ChildProcess.<anonymous> (/home/marcel/.node/corepack/pnpm/7.2.1/dist/pnpm.cjs:93924:18)\n    at ChildProcess.emit (node:events:527:28)\n    at maybeClose (node:internal/child_process:1090:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:302:5)"
+    }
+  }
+}
