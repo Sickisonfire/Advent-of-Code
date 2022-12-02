@@ -1,7 +1,6 @@
 pub fn solve() {
     let input = include_str!("../../inputs/input_one");
     part_one(input);
-    part_two(input);
 }
 
 fn part_one(input: &str) {
@@ -21,8 +20,10 @@ fn part_one(input: &str) {
         }
     }
     println!("max is {}", sums.iter().max().unwrap());
-}
 
-fn part_two(input: &str) {
-    for entry in input.split('\n') {}
+    sums.sort();
+    sums.reverse();
+
+    let top_three_sum: usize = sums.iter().take(3).sum();
+    println!("sum of top 3 is: {:?}", top_three_sum);
 }
