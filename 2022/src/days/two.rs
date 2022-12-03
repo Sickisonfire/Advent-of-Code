@@ -7,6 +7,8 @@ pub fn solve() {
     // win 6
     // draw 3
     // loss 0
+    //
+    // p2
 
     let parsed: Vec<Vec<&str>> = input
         .split("\n")
@@ -16,7 +18,7 @@ pub fn solve() {
 
     let mut points = 0;
 
-    for entry in parsed {
+    for entry in &parsed {
         match entry[1] {
             "X" => {
                 points += 1;
@@ -45,5 +47,41 @@ pub fn solve() {
             _ => (),
         };
     }
+
     println!("{points}");
+    points = 0;
+    //p2
+    // X = loss
+    // Y = draw
+    // Z = win
+    for entry in &parsed {
+        match entry[0] {
+            "A" => {
+                match entry[1] {
+                    "X" => points += 3,
+                    "Y" => points += 4,
+                    "Z" => points += 8,
+                    _ => (),
+                };
+            }
+            "B" => {
+                match entry[1] {
+                    "X" => points += 1,
+                    "Y" => points += 5,
+                    "Z" => points += 9,
+                    _ => (),
+                };
+            }
+            "C" => {
+                match entry[1] {
+                    "X" => points += 2,
+                    "Y" => points += 6,
+                    "Z" => points += 7,
+                    _ => (),
+                };
+            }
+            _ => (),
+        };
+    }
+    println!("p2 {points}");
 }
