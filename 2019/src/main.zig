@@ -1,24 +1,51 @@
 const std = @import("std");
+const print = @import("std").debug.print;
+const One = @import("days/one.zig");
 
 pub fn main() !void {
-    // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const allocator = gpa.allocator();
 
-    // stdout is for the actual output of your application, for example if you
-    // are implementing gzip, then only the compressed bytes should be sent to
-    // stdout, not any debugging messages.
-    const stdout_file = std.io.getStdOut().writer();
-    var bw = std.io.bufferedWriter(stdout_file);
-    const stdout = bw.writer();
+    var args = try std.process.argsAlloc(allocator);
+    defer std.process.argsFree(allocator, args);
 
-    try stdout.print("Run `zig build test` to run the tests.\n", .{});
+    for (args[1..]) |arg| {
+        var num = std.fmt.parseInt(i32, arg, 0) catch {
+            const e = error.InvalidInput;
+            return e;
+        };
 
-    try bw.flush(); // don't forget to flush!
-}
-
-test "simple test" {
-    var list = std.ArrayList(i32).init(std.testing.allocator);
-    defer list.deinit(); // try commenting this out and see if zig detects the memory leak!
-    try list.append(42);
-    try std.testing.expectEqual(@as(i32, 42), list.pop());
+        _ = switch (num) {
+            1 => try One.solve(allocator),
+            2 => error.NotImplemented,
+            3 => error.NotImplemented,
+            4 => error.NotImplemented,
+            5 => error.NotImplemented,
+            6 => error.NotImplemented,
+            7 => error.NotImplemented,
+            8 => error.NotImplemented,
+            9 => error.NotImplemented,
+            10 => error.NotImplemented,
+            11 => error.NotImplemented,
+            12 => error.NotImplemented,
+            13 => error.NotImplemented,
+            14 => error.NotImplemented,
+            15 => error.NotImplemented,
+            16 => error.NotImplemented,
+            17 => error.NotImplemented,
+            18 => error.NotImplemented,
+            19 => error.NotImplemented,
+            20 => error.NotImplemented,
+            21 => error.NotImplemented,
+            22 => error.NotImplemented,
+            23 => error.NotImplemented,
+            24 => error.NotImplemented,
+            25 => error.NotImplemented,
+            else => error.InvalidDate,
+        } catch |err| {
+            print("\n\n", .{});
+            return err;
+        };
+    }
 }
