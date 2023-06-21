@@ -1,20 +1,16 @@
 const std = @import("std");
+const Input = @import("../utils/input.zig").Input;
 const fs = std.fs;
-const ArrayList = std.ArrayList;
 pub fn solve(allocator: std.mem.Allocator) !void {
     // read file on build time
     // const s = @embedFile("one.txt");
     // std.debug.print("{s}", .{s});
 
-    var file = try fs.cwd().openFile("data/one.txt", .{});
-    defer file.close();
+    var input = Input(u8).init(allocator);
+    defer input.deinit();
+    _ = try input.read_from_file("data/one.txt");
 
-    const file_size = try file.getEndPos();
-    var file_buf = try allocator.alloc(u8, file_size);
-    defer allocator.free(file_buf);
-    _ = try file.read(file_buf);
-
-    var lines_iter = std.mem.splitSequence(u8, file_buf, "\n");
+    var lines_iter = input.split("\n");
 
     var sum_p1: i32 = 0;
     var sum_p2: i32 = 0;
