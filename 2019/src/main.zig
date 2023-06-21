@@ -1,6 +1,9 @@
 const std = @import("std");
 const print = @import("std").debug.print;
 const One = @import("days/one.zig");
+const Two = @import("days/two.zig");
+
+pub const Solution = struct { part_one: i32, part_two: i32 };
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
@@ -16,9 +19,9 @@ pub fn main() !void {
             return e;
         };
 
-        _ = switch (num) {
+        const solution: Solution = switch (num) {
             1 => try One.solve(allocator),
-            2 => error.NotImplemented,
+            2 => try Two.solve(allocator),
             3 => error.NotImplemented,
             4 => error.NotImplemented,
             5 => error.NotImplemented,
@@ -47,5 +50,6 @@ pub fn main() !void {
             print("\n\n", .{});
             return err;
         };
+        print("day {d}:\n Part 1: {d}\n Part 2: {d}\n", .{ num, solution.part_one, solution.part_two });
     }
 }

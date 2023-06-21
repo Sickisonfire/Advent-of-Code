@@ -1,7 +1,9 @@
 const std = @import("std");
 const Input = @import("../utils/input.zig").Input;
 const fs = std.fs;
-pub fn solve(allocator: std.mem.Allocator) !void {
+const Solution = @import("../main.zig").Solution;
+
+pub fn solve(allocator: std.mem.Allocator) !Solution {
     // read file on build time
     // const s = @embedFile("one.txt");
     // std.debug.print("{s}", .{s});
@@ -23,8 +25,8 @@ pub fn solve(allocator: std.mem.Allocator) !void {
             sum_p2 += fuel_p2;
         }
     }
-    std.debug.print("Part one: {d} \n", .{sum_p1});
-    std.debug.print("Part two: {d} \n", .{sum_p2});
+    const solution = Solution{ .part_one = sum_p1, .part_two = sum_p2 };
+    return solution;
 }
 
 // recurson like this may result in undefined behaviour
