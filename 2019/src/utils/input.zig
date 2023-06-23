@@ -31,6 +31,10 @@ pub fn Input(comptime T: type) type {
         pub fn split(self: *Self, delim: []const u8) std.mem.SplitIterator(T, .any) {
             return std.mem.splitAny(T, self.raw, delim);
         }
+
+        pub fn lines(self: *Self) std.mem.SplitIterator(T, .sequence) {
+            return std.mem.splitSequence(T, self.raw, "\n");
+        }
     };
 }
 
