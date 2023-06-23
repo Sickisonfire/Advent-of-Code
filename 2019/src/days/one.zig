@@ -12,18 +12,16 @@ pub fn solve(allocator: std.mem.Allocator) !Solution {
     defer input.deinit();
     _ = try input.read_from_file("data/one.txt");
 
-    var lines_iter = input.split("\n");
+    var lines_iter = input.lines();
 
     var sum_p1: i32 = 0;
     var sum_p2: i32 = 0;
     while (lines_iter.next()) |line| {
-        if (line.len != 0) {
-            var line_int = try std.fmt.parseInt(i32, line, 0);
-            var fuel_p1 = calc_fuel(line_int);
-            var fuel_p2 = calc_fuel_rec(line_int, 0);
-            sum_p1 += fuel_p1;
-            sum_p2 += fuel_p2;
-        }
+        var line_int = try std.fmt.parseInt(i32, line, 0);
+        var fuel_p1 = calc_fuel(line_int);
+        var fuel_p2 = calc_fuel_rec(line_int, 0);
+        sum_p1 += fuel_p1;
+        sum_p2 += fuel_p2;
     }
     const solution = Solution{ .part_one = sum_p1, .part_two = sum_p2 };
     return solution;

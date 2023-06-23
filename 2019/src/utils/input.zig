@@ -13,15 +13,15 @@ pub fn Input(comptime T: type) type {
             return Self{ .allocator = alloc, .raw = &[_]T{} };
         }
 
-        pub fn read_from_file(self: *Self, path: []const T) !void {
+        pub fn read_from_file(self: *Self, path: []const T) !usize {
             var file = try fs.cwd().openFile(path, .{});
             defer file.close();
 
             const file_size = try file.getEndPos();
 
-            self.raw = try self.allocator.alloc(T, file_size);
+            self.raw = try self.allocator.alloc(T, file_size - 1);
 
-            _ = try file.read(self.raw);
+            return try file.read(self.raw);
         }
 
         pub fn deinit(self: Self) void {
