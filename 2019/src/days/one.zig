@@ -42,5 +42,5 @@ fn calc_fuel(weight: i32) i32 {
     // zero or negative cases
     if (weight <= 8) return 0;
 
-    return @floatToInt(i32, @intToFloat(f32, weight) / 3.0) - 2;
+    return @as(i32, @intFromFloat(@as(f32, @floatFromInt(weight)) / 3.0)) - 2;
 }

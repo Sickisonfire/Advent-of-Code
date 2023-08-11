@@ -1,7 +1,10 @@
 const std = @import("std");
 const print = @import("std").debug.print;
+const template_gen = @import("template-gen.zig");
+
 const One = @import("days/one.zig");
 const Two = @import("days/two.zig");
+const Three = @import("days/three.zig");
 
 pub const Solution = struct { part_one: i32, part_two: i32 };
 
@@ -10,8 +13,10 @@ pub fn main() !void {
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
 
-    var args = try std.process.argsAlloc(allocator);
+    var args: [][:0]u8 = try std.process.argsAlloc(allocator);
     defer std.process.argsFree(allocator, args);
+
+    //parse args
 
     for (args[1..]) |arg| {
         var num = std.fmt.parseInt(i32, arg, 0) catch {
@@ -22,7 +27,7 @@ pub fn main() !void {
         const solution: Solution = switch (num) {
             1 => try One.solve(allocator),
             2 => try Two.solve(allocator),
-            3 => error.NotImplemented,
+            3 => try Three.solve(allocator),
             4 => error.NotImplemented,
             5 => error.NotImplemented,
             6 => error.NotImplemented,

@@ -24,8 +24,8 @@ pub fn solve(allocator: std.mem.Allocator) !Solution {
     var p2 = try partTwo(allocator, &arr.items, target);
 
     const solution = Solution{
-        .part_one = @intCast(i32, p1),
-        .part_two = @intCast(i32, p2),
+        .part_one = @intCast(p1),
+        .part_two = @intCast(p2),
     };
     return solution;
 }
