@@ -1,5 +1,5 @@
 mod days;
-use days::{one, two};
+use days::{four, one, three, two};
 
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).take(1).collect();
@@ -8,8 +8,8 @@ fn main() {
         Ok(day) => match day {
             1 => one::solve(),
             2 => two::solve(),
-            3 => unimplemented!(),
-            4 => unimplemented!(),
+            3 => three::solve(),
+            4 => four::solve(),
             5 => unimplemented!(),
             6 => unimplemented!(),
             7 => unimplemented!(),
