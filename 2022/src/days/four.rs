@@ -5,7 +5,7 @@ pub fn solve() {
     // [[[3,4], [3,4]]]
     // [[[3,4], [3,6]]]
     // [[[3,5], [3,4]]]
-    let input = include_str!("../../inputs/input_four");
+    let input = include_str!("../../inputs/four");
 
     // [["1-2", "3-4"],..]
     let mut parsed: Vec<Vec<_>> = input.split("\n").map(|x| x.split(",").collect()).collect();

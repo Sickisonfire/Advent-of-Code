@@ -1,5 +1,5 @@
 pub fn solve() {
-    let input = include_str!("../../inputs/input_one");
+    let input = include_str!("../../inputs/one");
     part_one(input);
 }
 
