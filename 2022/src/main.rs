@@ -1,5 +1,5 @@
 mod days;
-use days::{four, one, three, two};
+use days::{five, four, one, three, two};
 
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).take(1).collect();
@@ -10,7 +10,7 @@ fn main() {
             2 => two::solve(),
             3 => three::solve(),
             4 => four::solve(),
-            5 => unimplemented!(),
+            5 => five::solve(),
             6 => unimplemented!(),
             7 => unimplemented!(),
             8 => unimplemented!(),
